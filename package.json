@@ -1,10 +1,11 @@
 {
   "name": "facility-server",
   "version": "1.0.0",
-  "description": "A server to manage facility resources, allow users to book resources and request services.",
+  "description":
+    "A server to manage facility resources, allow users to book resources and request services.",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index",
+    "start": "nodemon src/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/nicklasfrahm/facility-server/issues"
   },
-  "homepage": "https://github.com/nicklasfrahm/facility-server#readme"
+  "homepage": "https://github.com/nicklasfrahm/facility-server#readme",
+  "devDependencies": {
+    "nodemon": "1.14.12"
+  }
 }
