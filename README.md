@@ -12,7 +12,7 @@ npm i
 
 ## Development
 
-For development, you can run the server with file watching. This auto-restarts the server on file changes. Run:
+For development, you can run the server with file watching. This auto-restart the server on file changes. To enable watch mode, run:
 
 ```
 npm start
