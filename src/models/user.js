@@ -21,6 +21,14 @@ const userSchema = new Schema({
     required: true,
     enum: ['google']
   },
+  authProviderId: {
+    type: String,
+    required: true
+  },
+  avatar: {
+    type: String,
+    required: true
+  },
   firstName: {
     type: String,
     required: true
@@ -32,7 +40,29 @@ const userSchema = new Schema({
   cardNumber: {
     type: Number,
     required: true
-  }
+  },
+  role: {
+    type: String,
+    required: true,
+    enum: ['user', 'staff', 'admin']
+  },
+  admissions: [
+    {
+      type: ObjectId,
+      ref: 'Request'
+    }
+  ],
+  devices: [
+    {
+      type: ObjectId,
+      ref: 'Device'
+    }
+  ],
+  verified: {
+    type: Boolean,
+    default: false
+  },
+  resetToken: String
 })
 
 module.exports = exports = mongoose.model('User', userSchema)
