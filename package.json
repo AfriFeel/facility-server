@@ -1,7 +1,7 @@
 {
   "name": "facility-server",
   "version": "1.0.0",
-  "description": "A server to manage facility resources, allow users to book resources and request services.",
+  "description": "A server to manage facility ressources, allow users to book ressources and request services.",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index",
@@ -13,7 +13,7 @@
   },
   "keywords": [
     "facility",
-    "resources",
+    "ressources",
     "management",
     "booking",
     "service",
