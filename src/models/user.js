@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const message = require('../locales/messages')
+const msg = require('../locales/messages')
 const regex = require('../util/regex')
 const Schema = mongoose.Schema
 const ObjectId = Schema.Types.ObjectId
@@ -13,38 +13,38 @@ const userSchema = new Schema({
       isAsync: true,
       message: msg.validateDefault('email'),
       validator: (v, cb) =>
-        cb(regex.mail.test(v), msg.validateValue('email', v))
+        cb(regex.email.test(v), msg.validateValue('email', v))
     }
   },
   authProvider: {
     type: String,
-    required: true,
-    enum: ['google']
+    enum: ['google'],
+    required: [true, msg.validateRequired('authProvider')]
   },
   authProviderId: {
     type: String,
-    required: true
+    required: [true, msg.validateRequired('authProviderId')]
   },
   avatar: {
     type: String,
-    required: true
+    required: [true, msg.validateRequired('avatar')]
   },
   firstName: {
     type: String,
-    required: true
+    required: [true, msg.validateRequired('firstName')]
   },
   lastName: {
     type: String,
-    required: true
+    required: [true, msg.validateRequired('lastName')]
   },
   cardNumber: {
     type: Number,
-    required: true
+    required: [true, msg.validateRequired('cardNumber')]
   },
   role: {
     type: String,
-    required: true,
-    enum: ['user', 'staff', 'admin']
+    enum: ['user', 'staff', 'admin'],
+    required: [true, msg.validateRequired('role')]
   },
   admissions: [
     {

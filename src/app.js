@@ -1,9 +1,8 @@
 const express = require('express')
+const loadControllers = require('./controllers')
 
 const app = express()
 
-app.get('/v1.0/messages/hello-world', (req, res, next) => {
-  return res.status(200).json({ message: 'Hello, World!' })
-})
+loadControllers(app)
 
 module.exports = exports = app
