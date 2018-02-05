@@ -8,12 +8,9 @@ const server = {
   host: process.env.SERVER_HOST || '127.0.0.1',
   port: parseInt(process.env.SERVER_PORT) || 8080
 }
-const mongodb = {
-  host: process.env.MONGODB_HOST || '127.0.0.1',
-  db: process.env.MONGODB_DATABASE || 'test'
-}
+const mongodbUrl = process.env.MONGODB_URL || 'mongodb://localhost/test'
 
-mongoose.connect(`mongodb://${mongodb.host}/${mongodb.db}`).catch(err => {
+mongoose.connect(`${mongodbUrl}`).catch(err => {
   winston.error(`[MDB] Connecting failed.`)
 })
 
@@ -24,7 +21,7 @@ db.on('error', err => {
 
 db.once('open', () => {
   const { host, db } = mongodb
-  winston.info(`[MDB] Connected to MongoDB server: ${host}/${db}`)
+  winston.info(`[MDB] Connected to MongoDB server: ${mongodbUrl}`)
 })
 
 process.on('uncaughtException', err => {
