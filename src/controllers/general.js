@@ -1,7 +1,8 @@
+const winston = require('winston').cli()
 const msg = require('../locales/messages')
 
 exports.unknownError = (err, req, res, next) => {
-  process.stdout.write(`[API] An unknown error occurred: ${err.message}\n`)
+  winston.error(`[API] An unknown error occurred: ${err.message}`)
   res.status(500).json({
     errors: [{ message: msg.unknownError() }]
   })
