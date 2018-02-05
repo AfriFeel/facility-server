@@ -12,7 +12,14 @@ const mongodb = {
   db: process.env.MONGODB_DATABASE || 'test'
 }
 
-mongoose.connect(`mongodb://${mongodb.host}/${mongodb.db}`)
+mongoose.connect(`mongodb://${mongodb.host}/${mongodb.db}`, err => {
+  const { host, db } = mongodb
+  if (err) {
+    winston.error(`[MDB] Connection error: ${err.message}`)
+  } else {
+    winston.info(`[MDB] Connected to MongoDB server: ${host}/${db}`)
+  }
+})
 
 db.on('error', err => {
   winston.error(`[MDB] Unknown error: ${err.message}`)
@@ -20,7 +27,7 @@ db.on('error', err => {
 
 db.once('open', () => {
   const { host, db } = mongodb
-  winston.info(`[MDB] Connected to MongoDB server: ${host}/${db}`)
+  winston.info(`[MDB] Connecting to MongoDB server: ${host}/${db}`)
 })
 
 process.on('uncaughtException', err => {
